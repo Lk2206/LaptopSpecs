@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Specifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; 
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .specs {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+            background-color: #ffffffd2;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        function loadSpecifications() {
+            const params = new URLSearchParams(window.location.search);
+            const brand = params.get('brand');
+            const specs = {
+                dell: [{ 
+                    name: 'Dell Inspiron 15',
+                    processor: 'Intel Core i5',
+                    ram: '8GB',
+                    storage: '512GB SSD',
+                    price: '₹50,690'},
+                {
+                    name: 'Dell Vostro 16',
+                    processor: 'Intel Core i5 12th gen',
+                    ram: '8GB',
+                    storage: '512GB SSD',
+                    price: '₹66,889'},
+                {
+                    name: "Dell XPS 13",
+                    processor: "Intel Core i7",
+                    ram: "16GB",
+                    storage: "1TB SSD",
+                    price: "₹1,25,000"
+                }
+                ],
+                hp:[ {
+                    
+                    name: 'HP Pavilion 14',
+                    processor: 'AMD Ryzen 5',
+                    ram: '16GB',
+                    storage: '1TB SSD',
+                    price: '₹76,999'
+                },
+                {   name: 'HP Envy x360',
+                    processor: 'AMD Ryzen 7',
+                    ram: '32GB',
+                    storage: '1TB SSD',
+                    price:'₹1,15,999'
+                } ,
+                {   name: 'HP OMEN',
+                    processor: 'AMD Ryzen 7 7840HS processor',
+                    ram: '16GB',
+                    storage: '1TB SSD',
+                    price:'₹1,21,999'
+                }  
+            
+                ],
+                lenovo: [{
+                    name: 'Lenovo LOQ',
+                    processor: 'Intel i5 12th Gen',
+                    ram: '8GB',
+                    storage: '256GB SSD',
+                    price: '₹69,490'},
+                 {   name: 'Lenovo LOQ',
+                    processor: 'Intel i5 12th Gen',
+                    ram: '16GB',
+                    storage: '512GB SSD',
+                    price: '₹69,490'},
+                 {   name: 'Lenovo IdeaPad Slim 3',
+                    processor: 'AMD Ryzen 5 5500U',
+                    ram: '8GB DDR4',
+                    storage: '512GB SSD',
+                    price: '₹45,990'},  
+                ]
+            };
+        
+            const selectedSpecs = specs[brand];
+            const specsContainer = document.getElementById('specs-container');
+
+    if (selectedSpecs && Array.isArray(selectedSpecs)) {
+   
+        specsContainer.innerHTML = '';
+
+      
+        selectedSpecs.forEach(laptop => {
+            specsContainer.innerHTML += `
+                <div style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                    <p><strong>Model:</strong> ${laptop.name}</p>
+                    <p><strong>Processor:</strong> ${laptop.processor}</p>
+                    <p><strong>RAM:</strong> ${laptop.ram}</p>
+                    <p><strong>Storage:</strong> ${laptop.storage}</p>
+                    <p><strong>Price:</strong> ${laptop.price}</p>
+                </div>
+            `;
+        });
+    } else if (selectedSpecs) {
+       
+        specsContainer.innerHTML = `
+            <p><strong>Model:</strong> ${selectedSpecs.name}</p>
+            <p><strong>Processor:</strong> ${selectedSpecs.processor}</p>
+            <p><strong>RAM:</strong> ${selectedSpecs.ram}</p>
+            <p><strong>Storage:</strong> ${selectedSpecs.storage}</p>
+            <p><strong>Price:</strong> ${selectedSpecs.price}</p>
+        `;
+    } else {
+      
+        specsContainer.innerHTML = '<p>Invalid brand selected!</p>';
+    }
+}
+
+        window.onload = loadSpecifications;
+    </script>
+</head>
+<body>
+    <video class="background-video" autoplay muted loop>
+        <source src="bgvideo.mp4" type="video/mp4">
+        Your browser does not support video tag.
+    </video>
+    <div class="container">
+        <h1>Laptop Specifications</h1>
+        <div class="specs" id="specs-container">
+            <p><strong>Model:</strong> <span id="specs-name"></span></p>
+            <p><strong>Processor:</strong> <span id="specs-processor"></span></p>
+            <p><strong>RAM:</strong> <span id="specs-ram"></span></p>
+            <p><strong>Storage:</strong> <span id="specs-storage"></span></p>
+            <p><strong>Price:</strong> <span id="specs-price"></span></p>
+        </div>
+    </div>
+</body>
+</html>

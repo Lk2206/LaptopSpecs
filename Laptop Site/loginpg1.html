@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #42afce;
+            padding: 50px;
+        }
+
+        .login-container {
+            display: inline-block;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <p id="message" class="error"></p>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="saveCredentials()">Log In</button>
+    </div>
+
+    <script>
+        function saveCredentials() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const message = document.getElementById("message");
+
+            
+            message.innerText = "";
+
+           
+            const usernamePattern = /^[a-zA-Z][a-zA-Z0-9]*$/;
+            if (!username) {
+                message.innerText = "Username is required.";
+                return;
+            }
+            if (!usernamePattern.test(username)) {
+                message.innerText = "Username must start with a letter and contain only alphanumeric characters.";
+                return;
+            }
+
+          
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!password) {
+                message.innerText = "Password is required.";
+                return;
+            }
+            if (!passwordPattern.test(password)) {
+                message.innerText = "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.";
+                return;
+            }
+
+            
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password);
+
+            alert("Credentials saved! Redirecting to Laptop Specifications...");
+            window.location.href = "homepage.html"; 
+        }
+
+      
+        $(document).ready(function () {
+            if (localStorage.getItem("username")) {
+            alert("You are already logged in! Redirecting to logout page...");
+            window.location.href = "logout.html"; 
+            }
+        });
+        
+        
+    </script>
+</body>
+</html>

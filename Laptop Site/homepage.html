@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles1.css">
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('2.jpg');
+            background-size: 49cm;
+            background-repeat: no-repeat;
+        }
+        .container {
+            margin-top: 100px;
+            margin-bottom: 300px;
+            color: rgb(255, 255, 255);
+            background-image: url('1.jpeg') ;
+        } 
+        .container h1{
+            color: black;
+            text-shadow:4px 2px 3px  rgb(223, 223, 109)             
+        }
+        .container p{
+            color:#151617;
+        }
+        a {
+            display: inline-block;
+            margin: 20x;
+            padding: 15px 30px;
+            background: linear-gradient(to right, #20e0e0, #dfe5ec);
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+        a:hover {
+            background-color: #2d7ebd;
+        }
+        .navbar {
+            background-color: #e5e35829; 
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Laptop Specs</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="homepage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="page2.html">Specifications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="loginpg1.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.html">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Welcome to Laptop Specs</h1>
+        <p>Welcome to Laptop Specs, your ultimate destination for exploring 
+            and comparing the latest laptops in the market. We provide comprehensive 
+            specifications to help you find the perfect laptop. Discover and compare 
+            models to make an informed decision with ease!</p>
+        <p>Your one-stop solution to explore laptop specifications.</p>
+        <a href="page2.html" class="btn btn-custom">Get Started</a>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('a').on('click', function() {
+                alert('You are being redirected to the specifications page.');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        .logout-container {
+            display: inline-block;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #dc3545;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <h1>Logout</h1>
+        <p>Are you sure you want to log out?</p>
+        <button onclick="logout()">Log Out</button>
+    </div>
+
+    <script>
+        function logout() {
+           
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+
+            alert("You have been logged out. Redirecting to login page...");
+            window.location.href = "loginpg1.html"; 
+        }
+
+        
+        $(document).ready(function () {
+            if (!localStorage.getItem("username")) {
+            alert("You are not logged in! Redirecting to login page...");
+            window.location.href = "loginpg1.html"; 
+            }
+        });
+    </script>
+</body>
+</html>

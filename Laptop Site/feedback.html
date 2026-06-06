@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form | Laptop Specs</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1c1c1c, #343434);
+            color: white;
+            padding: 50px;
+        }
+
+        /* Header Styling */
+        header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #4CAF50;
+        }
+
+        /* Centering Form */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        /* Feedback Form */
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 100, 0.2);
+            width: 400px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        form:hover {
+            transform: scale(1.02);
+        }
+
+        /* Labels */
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+            color: #ddd;
+        }
+
+        /* Input Fields */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Submit Button */
+        input[type="submit"] {
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            transition: 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            form {
+                width: 90%;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Feedback Form</h1>
+        <p>Tell us what you think about our laptop specifications!</p>
+    </header>
+    <main>
+        <form onsubmit="submitFeedback(); return false;">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+            <label for="feedback">Your Feedback</label>
+            <textarea id="feedback" name="feedback" rows="4" required placeholder="Write your feedback here..."></textarea>
+
+            <input type="submit" value="Submit Feedback">
+        </form>
+    </main>
+    <script>
+        function submitFeedback() {
+            alert('Thank you for your feedback!');
+            window.location.href = "page2.html"; // Redirect after submission
+        }
+    </script>
+</body>
+</html>

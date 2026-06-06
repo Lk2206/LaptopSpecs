@@ -1,0 +1,45 @@
+<DOCTYPE html>
+    <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LAPTOP Specifications</title>
+        <link rel="stylesheet" href="styles2.css">
+        <script>
+            function redirectToSpecifications() {
+                const selector = document.getElementById('laptopSelector');
+                const selectedBrand = selector.value.toLowerCase();
+    
+                if (selectedBrand) {
+                 window.location.href = `page3.html?brand=${selectedBrand}`;
+                }
+            }
+        </script>    
+        </head>
+        <body>
+            <header>
+                <h1>Laptop Specifications</h1>
+            </header>
+            <main>
+                <section>
+                    <h2>Available Laptops</h2>
+                    <select id="laptopSelector" onchange="redirectToSpecifications()">
+                    <option value="">Select a laptop</option>
+                    <option value="dell">Dell</option>
+                    <option value="lenovo">lenovo</option>
+                    <option value="hp">HP</option>
+                </select>
+                </section>
+                <section id="Specifications">
+                <h2>Specifications</h2>
+                <div id="laptopspecs">
+                    <p>Select a laptop to view its Specifications</p>
+                </div>
+            </section>    
+            <div class="feedback-button-container">
+            <a href="feedback.html"><button class="feedback-button">Feedback</button></a>
+            </div>
+            </main>
+            
+        </body>
+    </html>
