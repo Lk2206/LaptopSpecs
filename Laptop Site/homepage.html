@@ -3,95 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <!-- Include Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Laptop Specs | Compare & Explore Latest Laptops</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Design System -->
     <link rel="stylesheet" href="styles1.css">
-    <!-- Include jQuery and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-image: url('2.jpg');
-            background-size: 49cm;
-            background-repeat: no-repeat;
-        }
-        .container {
-            margin-top: 100px;
-            margin-bottom: 300px;
-            color: rgb(255, 255, 255);
-            background-image: url('1.jpeg') ;
-        } 
-        .container h1{
-            color: black;
-            text-shadow:4px 2px 3px  rgb(223, 223, 109)             
-        }
-        .container p{
-            color:#151617;
-        }
-        a {
-            display: inline-block;
-            margin: 20x;
-            padding: 15px 30px;
-            background: linear-gradient(to right, #20e0e0, #dfe5ec);
-            color: rgb(255, 255, 255);
-            text-decoration: none;
-            border-radius: 20px;
-            transition: 0.5s;
-        }
-        a:hover {
-            background-color: #2d7ebd;
-        }
-        .navbar {
-            background-color: #e5e35829; 
-            border-radius: 20px;
-        }
-    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Laptop Specs</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="homepage.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="page2.html">Specifications</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="feedback.html">Feedback</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="loginpg1.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="logout.html">Logout</a>
-                </li>
+
+    <!-- STICKY NAVBAR -->
+    <header class="site-navbar">
+        <div class="nav-container">
+            <a href="homepage.html" class="brand-logo">
+                <div class="brand-icon-box">
+                    <i class="fa-solid fa-laptop"></i>
+                </div>
+                <div><span class="brand-highlight">Laptop</span>Specs</div>
+            </a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a class="nav-link-item active" href="homepage.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a class="nav-link-item" href="page2.html"><i class="fa-solid fa-layer-group"></i> Specifications</a></li>
+                    <li><a class="nav-link-item" href="#brands"><i class="fa-solid fa-tags"></i> Brands</a></li>
+                    <li><a class="nav-link-item" href="#compare"><i class="fa-solid fa-code-compare"></i> Compare</a></li>
+                    <li><a class="nav-link-item" href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="loginpg1.html" class="nav-btn-login" id="authBtn">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SPLIT HERO SECTION WITH LAPTOP SHOWCASE -->
+    <section class="hero-wrapper">
+        <div class="hero-grid">
+            <!-- Left: Hero Text & Call to Actions -->
+            <div class="hero-content">
+                <div class="hero-pill-badge">
+                    <span class="hero-pill-pulse"></span>
+                    <span>2026 Laptop Hardware Catalog</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Find Your Ideal Laptop With <br>
+                    <span class="gradient-text">Verified Hardware Specs</span>
+                </h1>
+
+                <p class="hero-lead">
+                    Discover and compare the latest laptops on the market. From lightweight student ultrabooks to heavy-duty gaming beasts, get complete clarity on processors, RAM, SSD speeds, and real-time market prices.
+                </p>
+
+                <div class="hero-btn-row">
+                    <a href="page2.html" class="btn-primary-glow">
+                        <i class="fa-solid fa-magnifying-glass"></i> Explore Specifications
+                    </a>
+                    <a href="#compare" class="btn-secondary-glass">
+                        <i class="fa-solid fa-table-list"></i> Compare Models
+                    </a>
+                </div>
+
+                <div class="hero-tag-chips">
+                    <div class="tag-chip"><i class="fa-solid fa-microchip"></i> Intel Core 12/13th Gen</div>
+                    <div class="tag-chip"><i class="fa-solid fa-bolt"></i> AMD Ryzen 5 & 7</div>
+                    <div class="tag-chip"><i class="fa-solid fa-memory"></i> Up to 32GB DDR5</div>
+                    <div class="tag-chip"><i class="fa-solid fa-indian-rupee-sign"></i> Accurate INR Pricing</div>
+                </div>
+            </div>
+
+            <!-- Right: Glowing Laptop Visual Mockup -->
+            <div class="hero-visual-card">
+                <div class="laptop-showcase-frame">
+                    <img src="1.jpeg" alt="Flagship Laptop Display" class="laptop-img">
+                    <!-- Floating Spec Badges -->
+                    <div class="floating-spec-badge badge-pos-top">
+                        <i class="fa-solid fa-microchip" style="color: #00f2fe;"></i>
+                        <span>Intel Core i7 & Ryzen 7</span>
+                    </div>
+                    <div class="floating-spec-badge badge-pos-bottom">
+                        <i class="fa-solid fa-bolt" style="color: #38bdf8;"></i>
+                        <span>32GB RAM & 1TB Gen4 SSD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY STATS BAR -->
+    <div class="stats-container">
+        <div class="stats-grid">
+            <div class="stat-item-box">
+                <div class="stat-digit">50+</div>
+                <div class="stat-label-text">Curated Laptop Models</div>
+            </div>
+            <div class="stat-item-box">
+                <div class="stat-digit">Top 3</div>
+                <div class="stat-label-text">Leading Global Brands</div>
+            </div>
+            <div class="stat-item-box">
+                <div class="stat-digit">₹45,990</div>
+                <div class="stat-label-text">Entry Level Starting Price</div>
+            </div>
+            <div class="stat-item-box">
+                <div class="stat-digit">100%</div>
+                <div class="stat-label-text">Verified Hardware Data</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURED BRANDS SECTION -->
+    <section class="main-section" id="brands">
+        <div class="section-head-center">
+            <span class="section-kicker">Leading Manufacturers</span>
+            <h2 class="section-headline">Explore by Brand</h2>
+            <p class="section-desc-text">
+                Browse through top laptop manufacturers to inspect detailed processor architectures, RAM configurations, and price brackets.
+            </p>
+        </div>
+
+        <div class="brand-cards-grid">
+            <!-- DELL CARD -->
+            <div class="brand-card-item">
+                <div>
+                    <div class="brand-header-row">
+                        <span class="brand-badge-pill badge-dell-style">Enterprise & Precision</span>
+                        <div class="brand-logo-icon">
+                            <i class="fa-solid fa-laptop" style="color: #38bdf8;"></i>
+                        </div>
+                    </div>
+                    <h3 class="brand-title-text">Dell</h3>
+                    <p class="brand-summary-text">
+                        Industry standard for business durability, long battery life, and the flagship XPS ultrabook series.
+                    </p>
+                    <ul class="brand-models-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Dell Inspiron 15 (Core i5, ₹50,690)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Dell Vostro 16 (12th Gen, ₹66,889)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Dell XPS 13 (Core i7, ₹1,25,000)</li>
+                    </ul>
+                </div>
+                <a href="page3.html?brand=dell" class="brand-action-btn">
+                    View Dell Specifications <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- HP CARD -->
+            <div class="brand-card-item">
+                <div>
+                    <div class="brand-header-row">
+                        <span class="brand-badge-pill badge-hp-style">Creators & Gaming</span>
+                        <div class="brand-logo-icon">
+                            <i class="fa-solid fa-bolt" style="color: #60a5fa;"></i>
+                        </div>
+                    </div>
+                    <h3 class="brand-title-text">HP</h3>
+                    <p class="brand-summary-text">
+                        Vibrant OLED screens, flexible Envy x360 convertibles, and lethal high-frame-rate OMEN gaming laptops.
+                    </p>
+                    <ul class="brand-models-list">
+                        <li><i class="fa-solid fa-circle-check"></i> HP Pavilion 14 (Ryzen 5, ₹76,999)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> HP Envy x360 (32GB RAM, ₹1,15,999)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> HP OMEN 16 (Ryzen 7 7840HS, ₹1,21,999)</li>
+                    </ul>
+                </div>
+                <a href="page3.html?brand=hp" class="brand-action-btn">
+                    View HP Specifications <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- LENOVO CARD -->
+            <div class="brand-card-item">
+                <div>
+                    <div class="brand-header-row">
+                        <span class="brand-badge-pill badge-lenovo-style">Value & Performance</span>
+                        <div class="brand-logo-icon">
+                            <i class="fa-solid fa-shield-halved" style="color: #f87171;"></i>
+                        </div>
+                    </div>
+                    <h3 class="brand-title-text">Lenovo</h3>
+                    <p class="brand-summary-text">
+                        Unmatched value-to-performance in the LOQ gaming line and comfortable keyboards on IdeaPad machines.
+                    </p>
+                    <ul class="brand-models-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Lenovo LOQ 8GB (Intel i5, ₹69,490)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Lenovo LOQ 16GB (Intel i5, ₹74,990)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Lenovo IdeaPad Slim 3 (Ryzen 5, ₹45,990)</li>
+                    </ul>
+                </div>
+                <a href="page3.html?brand=lenovo" class="brand-action-btn">
+                    View Lenovo Specifications <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIDE-BY-SIDE SPECIFICATIONS COMPARISON TABLE -->
+    <section class="main-section" id="compare" style="padding-top: 10px;">
+        <div class="section-head-center">
+            <span class="section-kicker">Head to Head</span>
+            <h2 class="section-headline">Quick Specs Comparison</h2>
+            <p class="section-desc-text">
+                Compare popular models across different price tiers to choose the best configuration for your budget.
+            </p>
+        </div>
+
+        <div class="comparison-container">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Model Name</th>
+                        <th>Processor</th>
+                        <th>RAM</th>
+                        <th>Storage</th>
+                        <th>Price (INR)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="comp-model-name">
+                                <i class="fa-solid fa-laptop" style="color: #38bdf8;"></i> Dell XPS 13
+                            </div>
+                        </td>
+                        <td>Intel Core i7 13th Gen</td>
+                        <td>16GB LPDDR5</td>
+                        <td>1TB NVMe SSD</td>
+                        <td class="comp-price-tag">₹1,25,000</td>
+                        <td><a href="page3.html?brand=dell" class="btn-primary-glow" style="padding: 6px 14px; font-size: 0.8rem;">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="comp-model-name">
+                                <i class="fa-solid fa-bolt" style="color: #60a5fa;"></i> HP OMEN 16
+                            </div>
+                        </td>
+                        <td>AMD Ryzen 7 7840HS</td>
+                        <td>16GB DDR5</td>
+                        <td>1TB Gen4 SSD</td>
+                        <td class="comp-price-tag">₹1,21,999</td>
+                        <td><a href="page3.html?brand=hp" class="btn-primary-glow" style="padding: 6px 14px; font-size: 0.8rem;">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="comp-model-name">
+                                <i class="fa-solid fa-bolt" style="color: #60a5fa;"></i> HP Envy x360
+                            </div>
+                        </td>
+                        <td>AMD Ryzen 7 7730U</td>
+                        <td>32GB DDR4</td>
+                        <td>1TB NVMe SSD</td>
+                        <td class="comp-price-tag">₹1,15,999</td>
+                        <td><a href="page3.html?brand=hp" class="btn-primary-glow" style="padding: 6px 14px; font-size: 0.8rem;">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="comp-model-name">
+                                <i class="fa-solid fa-shield-halved" style="color: #f87171;"></i> Lenovo LOQ
+                            </div>
+                        </td>
+                        <td>Intel Core i5 12th Gen</td>
+                        <td>16GB DDR5</td>
+                        <td>512GB SSD</td>
+                        <td class="comp-price-tag">₹74,990</td>
+                        <td><a href="page3.html?brand=lenovo" class="btn-primary-glow" style="padding: 6px 14px; font-size: 0.8rem;">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="comp-model-name">
+                                <i class="fa-solid fa-laptop" style="color: #38bdf8;"></i> Dell Inspiron 15
+                            </div>
+                        </td>
+                        <td>Intel Core i5</td>
+                        <td>8GB DDR4</td>
+                        <td>512GB SSD</td>
+                        <td class="comp-price-tag">₹50,690</td>
+                        <td><a href="page3.html?brand=dell" class="btn-primary-glow" style="padding: 6px 14px; font-size: 0.8rem;">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="comp-model-name">
+                                <i class="fa-solid fa-shield-halved" style="color: #f87171;"></i> IdeaPad Slim 3
+                            </div>
+                        </td>
+                        <td>AMD Ryzen 5 5500U</td>
+                        <td>8GB DDR4</td>
+                        <td>512GB SSD</td>
+                        <td class="comp-price-tag">₹45,990</td>
+                        <td><a href="page3.html?brand=lenovo" class="btn-primary-glow" style="padding: 6px 14px; font-size: 0.8rem;">Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand-title">
+                <i class="fa-solid fa-laptop" style="color: #00f2fe;"></i> LaptopSpecs
+            </div>
+            <ul class="footer-nav-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="page2.html">Specifications</a></li>
+                <li><a href="#brands">Brands</a></li>
+                <li><a href="#compare">Compare</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="loginpg1.html">Account</a></li>
             </ul>
         </div>
-    </nav>
+        <div class="footer-copy-text">
+            &copy; 2026 LaptopSpecs. All hardware data verified against official OEM releases.
+        </div>
+    </footer>
 
-    <div class="container mt-5">
-        <h1>Welcome to Laptop Specs</h1>
-        <p>Welcome to Laptop Specs, your ultimate destination for exploring 
-            and comparing the latest laptops in the market. We provide comprehensive 
-            specifications to help you find the perfect laptop. Discover and compare 
-            models to make an informed decision with ease!</p>
-        <p>Your one-stop solution to explore laptop specifications.</p>
-        <a href="page2.html" class="btn btn-custom">Get Started</a>
-    </div>
+    <!-- INTERACTIVITY SCRIPT -->
     <script>
-        $(document).ready(function() {
-            $('a').on('click', function() {
-                alert('You are being redirected to the specifications page.');
+        // Mobile hamburger toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
             });
-        });
+        }
+
+        // Check login state
+        const authBtn = document.getElementById('authBtn');
+        const username = localStorage.getItem('username');
+
+        if (username && authBtn) {
+            authBtn.innerHTML = `<i class="fa-solid fa-user-check"></i> ${username}`;
+            authBtn.href = "logout.html";
+            authBtn.title = "Click to Logout";
+        }
     </script>
 </body>
 </html>

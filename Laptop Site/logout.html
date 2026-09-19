@@ -3,66 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout Page</title>
+    <title>Account Logout | Laptop Specs</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Design System -->
+    <link rel="stylesheet" href="styles1.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        .auth-page-container {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             text-align: center;
-            background-color: #f4f4f4;
-            padding: 50px;
         }
 
-        .logout-container {
-            display: inline-block;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .user-avatar-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.1);
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #38bdf8;
+            margin-bottom: 20px;
         }
 
-        button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #dc3545;
-            color: white;
-            font-size: 16px;
+        .btn-danger-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: #fff;
+            padding: 13px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
-            border-radius: 5px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
         }
 
-        button:hover {
-            background-color: #c82333;
+        .btn-danger-glass:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(220, 38, 38, 0.6);
         }
 
-        h1 {
-            color: #333;
+        .button-group-logout {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px;
+            flex-wrap: wrap;
         }
     </style>
 </head>
 <body>
-    <div class="logout-container">
-        <h1>Logout</h1>
-        <p>Are you sure you want to log out?</p>
-        <button onclick="logout()">Log Out</button>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar">
+        <div class="nav-container">
+            <a href="homepage.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <span>Laptop</span>Specs
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a class="nav-link-item" href="homepage.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a class="nav-link-item" href="page2.html"><i class="fa-solid fa-layer-group"></i> Specifications</a></li>
+                    <li><a class="nav-link-item" href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-page-container">
+        <div class="auth-card">
+            <div class="user-avatar-badge">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+            <h1 class="hero-title" style="font-size: 1.8rem; margin-bottom: 8px;">Active Session</h1>
+            <p class="hero-subtitle" style="font-size: 1rem; margin-bottom: 24px;">
+                You are currently signed in as <br>
+                <strong id="displayUsername" style="color: #38bdf8; font-size: 1.2rem;">User</strong>
+            </p>
+
+            <div class="button-group-logout">
+                <button onclick="logout()" class="btn-danger-glass">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+                </button>
+                <a href="homepage.html" class="btn-secondary-glass">
+                    <i class="fa-solid fa-arrow-left"></i> Cancel
+                </a>
+            </div>
+        </div>
     </div>
 
     <script>
-        function logout() {
-           
-            localStorage.removeItem("username");
-            localStorage.removeItem("password");
-
-            alert("You have been logged out. Redirecting to login page...");
-            window.location.href = "loginpg1.html"; 
+        const storedUser = localStorage.getItem("username");
+        if (!storedUser) {
+            window.location.href = "loginpg1.html";
+        } else {
+            document.getElementById("displayUsername").innerText = storedUser;
         }
 
-        
-        $(document).ready(function () {
-            if (!localStorage.getItem("username")) {
-            alert("You are not logged in! Redirecting to login page...");
-            window.location.href = "loginpg1.html"; 
-            }
-        });
+        function logout() {
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+            window.location.href = "loginpg1.html";
+        }
     </script>
 </body>
 </html>

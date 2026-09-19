@@ -3,126 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form | Laptop Specs</title>
+    <title>Feedback | Laptop Specs</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Design System -->
+    <link rel="stylesheet" href="styles1.css">
     <style>
-        /* General Page Styling */
-        body {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #1c1c1c, #343434);
-            color: white;
-            padding: 50px;
+        .feedback-page-wrap {
+            max-width: 600px;
+            margin: 40px auto 80px;
+            padding: 0 24px;
         }
 
-        /* Header Styling */
-        header h1 {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            color: #4CAF50;
+        .feedback-form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* Centering Form */
-        main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 60vh;
-        }
-
-        /* Feedback Form */
-        form {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 255, 100, 0.2);
-            width: 400px;
+        .form-group {
+            margin-bottom: 22px;
             text-align: left;
-            transition: transform 0.3s ease;
         }
 
-        form:hover {
-            transform: scale(1.02);
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
         }
 
-        /* Labels */
-        label {
-            font-weight: bold;
-            display: block;
-            margin: 10px 0 5px;
-            color: #ddd;
-        }
-
-        /* Input Fields */
-        input, textarea {
+        .form-input, .form-textarea {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 16px;
+            padding: 13px 18px;
+            border-radius: var(--radius-md);
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
             outline: none;
-            transition: 0.3s ease-in-out;
+            transition: var(--transition-smooth);
         }
 
-        input:focus, textarea:focus {
-            background: rgba(255, 255, 255, 0.3);
+        .form-input:focus, .form-textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            background: rgba(15, 23, 42, 0.9);
         }
 
-        /* Submit Button */
-        input[type="submit"] {
-            background: #4CAF50;
-            color: white;
-            font-weight: bold;
+        .rating-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .rating-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
             cursor: pointer;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            text-transform: uppercase;
-            transition: 0.3s ease-in-out;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
         }
 
-        input[type="submit"]:hover {
-            background: #45a049;
-            transform: scale(1.05);
+        .rating-btn:hover, .rating-btn.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: #38bdf8;
+            color: #38bdf8;
         }
 
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            form {
-                width: 90%;
-                padding: 30px;
-            }
+        .feedback-status-msg {
+            display: none;
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Feedback Form</h1>
-        <p>Tell us what you think about our laptop specifications!</p>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar">
+        <div class="nav-container">
+            <a href="homepage.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <span>Laptop</span>Specs
+            </a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a class="nav-link-item" href="homepage.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a class="nav-link-item" href="page2.html"><i class="fa-solid fa-layer-group"></i> Specifications</a></li>
+                    <li><a class="nav-link-item" href="homepage.html#brands"><i class="fa-solid fa-tags"></i> Top Brands</a></li>
+                    <li><a class="nav-link-item active" href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="loginpg1.html" class="nav-btn-login" id="authBtn">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+                </a>
+            </div>
+        </div>
     </header>
-    <main>
-        <form onsubmit="submitFeedback(); return false;">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your name">
 
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your email">
+    <!-- FEEDBACK FORM -->
+    <main class="feedback-page-wrap">
+        <div class="section-header">
+            <span class="section-tag">Community & Requests</span>
+            <h1 class="section-title">Your Feedback</h1>
+            <p class="section-desc">
+                Tell us what you think about our specifications and help us improve laptop benchmarks.
+            </p>
+        </div>
 
-            <label for="feedback">Your Feedback</label>
-            <textarea id="feedback" name="feedback" rows="4" required placeholder="Write your feedback here..."></textarea>
+        <div class="feedback-form-card">
+            <div id="statusMsg" class="feedback-status-msg">
+                <i class="fa-solid fa-circle-check"></i> Thank you! Your feedback has been recorded. Redirecting...
+            </div>
 
-            <input type="submit" value="Submit Feedback">
-        </form>
+            <form onsubmit="submitFeedback(event)">
+                <div class="form-group">
+                    <label for="name" class="form-label">
+                        <i class="fa-solid fa-user"></i> Full Name
+                    </label>
+                    <input type="text" id="name" class="form-input" required placeholder="e.g. Alex Johnson">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        <i class="fa-solid fa-envelope"></i> Email Address
+                    </label>
+                    <input type="email" id="email" class="form-input" required placeholder="alex@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fa-solid fa-star"></i> How would you rate the site?
+                    </label>
+                    <div class="rating-group">
+                        <div class="rating-btn active" onclick="setRating(this, 5)">⭐⭐⭐⭐⭐ Excellent</div>
+                        <div class="rating-btn" onclick="setRating(this, 4)">⭐⭐⭐⭐ Good</div>
+                        <div class="rating-btn" onclick="setRating(this, 3)">⭐⭐⭐ Average</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback" class="form-label">
+                        <i class="fa-solid fa-message"></i> Your Review & Suggestions
+                    </label>
+                    <textarea id="feedback" class="form-textarea" rows="4" required placeholder="Tell us which laptop specs or brands you'd like added..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary-glow" style="width: 100%; justify-content: center; cursor: pointer; border: none;">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Feedback
+                </button>
+            </form>
+        </div>
     </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <i class="fa-solid fa-laptop-code" style="color: #38bdf8;"></i> LaptopSpecs
+            </div>
+            <ul class="footer-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="page2.html">Specifications</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 LaptopSpecs. We value your feedback.
+        </div>
+    </footer>
+
     <script>
-        function submitFeedback() {
-            alert('Thank you for your feedback!');
-            window.location.href = "page2.html"; // Redirect after submission
+        function setRating(el, stars) {
+            document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function submitFeedback(e) {
+            e.preventDefault();
+            const status = document.getElementById('statusMsg');
+            status.style.display = 'block';
+
+            setTimeout(() => {
+                window.location.href = "page2.html";
+            }, 1200);
+        }
+
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+            });
+        }
+
+        const authBtn = document.getElementById('authBtn');
+        const username = localStorage.getItem('username');
+
+        if (username && authBtn) {
+            authBtn.innerHTML = `<i class="fa-solid fa-user-check"></i> ${username}`;
+            authBtn.href = "logout.html";
+            authBtn.title = "Click to Logout";
         }
     </script>
 </body>

@@ -3,109 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Member Login | Laptop Specs</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Design System -->
+    <link rel="stylesheet" href="styles1.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        .auth-page-container {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             text-align: center;
-            background-color: #42afce;
-            padding: 50px;
         }
 
-        .login-container {
-            display: inline-block;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .auth-logo-badge {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--grad-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            box-shadow: var(--glow);
+            margin-bottom: 20px;
         }
 
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .auth-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
         }
 
-        button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #28a745;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
+        .auth-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
         }
 
-        button:hover {
-            background-color: #218838;
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
         }
 
-        .error {
-            color: red;
-            font-size: 14px;
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
         }
-        
+
+        .input-icon-wrap {
+            position: relative;
+        }
+
+        .input-icon-wrap input {
+            width: 100%;
+            padding: 13px 18px 13px 44px;
+            border-radius: var(--radius-md);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .input-icon-wrap input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .input-leading-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .error-alert {
+            display: none;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .auth-footer-text {
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .auth-footer-text a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <p id="message" class="error"></p>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="saveCredentials()">Log In</button>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar">
+        <div class="nav-container">
+            <a href="homepage.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <span>Laptop</span>Specs
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a class="nav-link-item" href="homepage.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a class="nav-link-item" href="page2.html"><i class="fa-solid fa-layer-group"></i> Specifications</a></li>
+                    <li><a class="nav-link-item" href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-page-container">
+        <div class="auth-card">
+            <div class="auth-logo-badge">
+                <i class="fa-solid fa-user-lock"></i>
+            </div>
+            <h1 class="auth-title">Welcome Back</h1>
+            <p class="auth-subtitle">Sign in to save preferred laptop configurations</p>
+
+            <div id="message" class="error-alert"></div>
+
+            <form onsubmit="saveCredentials(event)">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <div class="input-icon-wrap">
+                        <i class="fa-solid fa-user input-leading-icon"></i>
+                        <input type="text" id="username" placeholder="e.g. techpro24" autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-icon-wrap">
+                        <i class="fa-solid fa-lock input-leading-icon"></i>
+                        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary-glow" style="width: 100%; justify-content: center; cursor: pointer; border: none; margin-top: 10px;">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Log In
+                </button>
+            </form>
+
+            <div class="auth-footer-text">
+                Return to <a href="homepage.html">Homepage</a> without logging in.
+            </div>
+        </div>
     </div>
 
     <script>
-        function saveCredentials() {
-            const username = document.getElementById("username").value.trim();
-            const password = document.getElementById("password").value.trim();
+        // Check if already logged in
+        if (localStorage.getItem("username")) {
+            window.location.href = "logout.html";
+        }
+
+        function saveCredentials(e) {
+            e.preventDefault();
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
             const message = document.getElementById("message");
 
-            
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            message.style.display = "none";
             message.innerText = "";
 
-           
             const usernamePattern = /^[a-zA-Z][a-zA-Z0-9]*$/;
             if (!username) {
-                message.innerText = "Username is required.";
+                showError("Username is required.");
                 return;
             }
             if (!usernamePattern.test(username)) {
-                message.innerText = "Username must start with a letter and contain only alphanumeric characters.";
+                showError("Username must start with a letter and contain only alphanumeric characters.");
                 return;
             }
 
-          
             const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
             if (!password) {
-                message.innerText = "Password is required.";
+                showError("Password is required.");
                 return;
             }
             if (!passwordPattern.test(password)) {
-                message.innerText = "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.";
+                showError("Password must be at least 8 characters long and include an uppercase letter, lowercase letter, number, and special character (@$!%*?&).");
                 return;
             }
 
-            
             localStorage.setItem("username", username);
             localStorage.setItem("password", password);
 
-            alert("Credentials saved! Redirecting to Laptop Specifications...");
-            window.location.href = "homepage.html"; 
+            window.location.href = "homepage.html";
         }
 
-      
-        $(document).ready(function () {
-            if (localStorage.getItem("username")) {
-            alert("You are already logged in! Redirecting to logout page...");
-            window.location.href = "logout.html"; 
-            }
-        });
-        
-        
+        function showError(text) {
+            const message = document.getElementById("message");
+            message.innerText = text;
+            message.style.display = "block";
+        }
     </script>
 </body>
 </html>

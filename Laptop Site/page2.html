@@ -1,45 +1,166 @@
-<DOCTYPE html>
-    <html lang="en">
-        <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LAPTOP Specifications</title>
-        <link rel="stylesheet" href="styles2.css">
-        <script>
-            function redirectToSpecifications() {
-                const selector = document.getElementById('laptopSelector');
-                const selectedBrand = selector.value.toLowerCase();
-    
-                if (selectedBrand) {
-                 window.location.href = `page3.html?brand=${selectedBrand}`;
-                }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Laptop Brand | Laptop Specs</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles2.css">
+    <script>
+        function redirectToSpecifications() {
+            const selector = document.getElementById('laptopSelector');
+            const selectedBrand = selector.value.toLowerCase();
+
+            if (selectedBrand) {
+                window.location.href = `page3.html?brand=${selectedBrand}`;
             }
-        </script>    
-        </head>
-        <body>
-            <header>
-                <h1>Laptop Specifications</h1>
-            </header>
-            <main>
-                <section>
-                    <h2>Available Laptops</h2>
-                    <select id="laptopSelector" onchange="redirectToSpecifications()">
-                    <option value="">Select a laptop</option>
-                    <option value="dell">Dell</option>
-                    <option value="lenovo">lenovo</option>
-                    <option value="hp">HP</option>
-                </select>
-                </section>
-                <section id="Specifications">
-                <h2>Specifications</h2>
-                <div id="laptopspecs">
-                    <p>Select a laptop to view its Specifications</p>
+        }
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar">
+        <div class="nav-container">
+            <a href="homepage.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-laptop-code"></i>
                 </div>
-            </section>    
-            <div class="feedback-button-container">
-            <a href="feedback.html"><button class="feedback-button">Feedback</button></a>
+                <span>Laptop</span>Specs
+            </a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a class="nav-link-item" href="homepage.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a class="nav-link-item active" href="page2.html"><i class="fa-solid fa-layer-group"></i> Specifications</a></li>
+                    <li><a class="nav-link-item" href="homepage.html#brands"><i class="fa-solid fa-tags"></i> Top Brands</a></li>
+                    <li><a class="nav-link-item" href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="loginpg1.html" class="nav-btn-login" id="authBtn">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+                </a>
             </div>
-            </main>
-            
-        </body>
-    </html>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="selector-page-container">
+        <div class="selector-header">
+            <span class="section-tag">Specifications Center</span>
+            <h1 class="section-title">Select Manufacturer</h1>
+            <p class="section-desc">
+                Choose a laptop brand below or use the quick dropdown to review full technical specifications,
+                processor benchmarks, and price lists.
+            </p>
+        </div>
+
+        <div class="selector-box">
+            <!-- QUICK DROPDOWN -->
+            <div class="selector-form-group">
+                <label for="laptopSelector" class="selector-label">
+                    <i class="fa-solid fa-filter mr-1"></i> Quick Brand Selection
+                </label>
+                <div class="custom-select-wrap">
+                    <select id="laptopSelector" onchange="redirectToSpecifications()">
+                        <option value="">-- Choose a Brand --</option>
+                        <option value="dell">Dell (Inspiron, Vostro, XPS)</option>
+                        <option value="hp">HP (Pavilion, Envy x360, OMEN)</option>
+                        <option value="lenovo">Lenovo (LOQ, IdeaPad Slim 3)</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down custom-select-icon"></i>
+                </div>
+            </div>
+
+            <div class="divider-text">Or Click a Brand Directly</div>
+
+            <!-- VISUAL BRAND TILES -->
+            <div class="interactive-brands-grid">
+                <a href="page3.html?brand=dell" class="brand-select-tile">
+                    <div class="brand-tile-icon" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+                    <div class="brand-tile-title">Dell</div>
+                    <div class="brand-tile-subtitle">Inspiron &bull; Vostro &bull; XPS</div>
+                </a>
+
+                <a href="page3.html?brand=hp" class="brand-select-tile">
+                    <div class="brand-tile-icon" style="color: #60a5fa; border-color: rgba(96, 165, 250, 0.3);">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div class="brand-tile-title">HP</div>
+                    <div class="brand-tile-subtitle">Pavilion &bull; Envy &bull; OMEN</div>
+                </a>
+
+                <a href="page3.html?brand=lenovo" class="brand-select-tile">
+                    <div class="brand-tile-icon" style="color: #f87171; border-color: rgba(248, 113, 113, 0.3);">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="brand-tile-title">Lenovo</div>
+                    <div class="brand-tile-subtitle">LOQ Gaming &bull; IdeaPad</div>
+                </a>
+            </div>
+
+            <!-- FEEDBACK BANNER -->
+            <div class="feedback-cta-banner">
+                <div class="feedback-cta-text">
+                    <h4>Looking for another brand or model?</h4>
+                    <p>Let us know in our feedback form and we will add more laptop benchmarks.</p>
+                </div>
+                <a href="feedback.html" class="btn-secondary-glass">
+                    <i class="fa-solid fa-pen-to-square"></i> Send Feedback
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <i class="fa-solid fa-laptop-code" style="color: #38bdf8;"></i> LaptopSpecs
+            </div>
+            <ul class="footer-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="page2.html">Specifications</a></li>
+                <li><a href="homepage.html#brands">Brands</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 LaptopSpecs. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+            });
+        }
+
+        const authBtn = document.getElementById('authBtn');
+        const username = localStorage.getItem('username');
+
+        if (username && authBtn) {
+            authBtn.innerHTML = `<i class="fa-solid fa-user-check"></i> ${username}`;
+            authBtn.href = "logout.html";
+            authBtn.title = "Click to Logout";
+        }
+    </script>
+</body>
+</html>
